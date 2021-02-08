@@ -3,7 +3,7 @@ package Project1;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
-public class Date {
+public class Date implements Comparable<Date>{
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
@@ -62,5 +62,21 @@ public class Date {
                 if (leap && day > 29) { return false; }
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(month) + "/" + Integer.toString(day) + "/" + Integer.toString(year);
+    }
+
+    @Override
+    public int compareTo(Date o) {
+        if (year < o.year)  { return -1; }
+        if (year > o.year)  { return  1; }
+        if (month < o.month){ return -1; }
+        if (month > o.month){ return  1; }
+        if (day < o.day)    { return -1; }
+        if (day > o.day)    { return  1; }
+        return 0;
     }
 }

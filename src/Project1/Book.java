@@ -24,6 +24,22 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book#" + number + "::" + name + "::" + new SimpleDateFormat("mm/dd/yyyy").format(datePublished);
+        return "Book#" + number + "::" + name + "::" + datePublished;
+    }
+
+    public boolean isCheckedOut() {
+        return checkedOut;
+    }
+
+    public void setCheckedOut(boolean checkedOut) {
+        this.checkedOut = checkedOut;
+    }
+
+    public Date getDatePublished() {
+        return datePublished;
+    }
+
+    public String getNumber() {
+        return number;
     }
 }
