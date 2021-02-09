@@ -137,7 +137,7 @@ public class Date implements Comparable<Date>{
         //Testing the isValid() method
         //test case #3, test the year which is more than now in a date.
         System.out.println("running test case #3");
-        result = new Date("2/29/2009").isValid();
+        result = new Date("10/30/2022").isValid();
         if(!result)
             System.out.println("test case #3, test the year which is more than now in a date. PASSED.");
         else
@@ -156,7 +156,7 @@ public class Date implements Comparable<Date>{
         //test case #5, test the correct day in leap year.
         System.out.println("running test case #5");
         result = new Date("2/29/2000").isValid();
-        if(!result)
+        if(result)
             System.out.println("test case #5, test the correct day in leap year. PASSED.");
         else
             System.out.println("test case #5, test the correct day in leap year. FAILED.");
@@ -165,7 +165,7 @@ public class Date implements Comparable<Date>{
         //test case #6, test the correct date.
         System.out.println("running test case #6");
         result = new Date("3/31/2008").isValid();
-        if(!result)
+        if(result)
             System.out.println("test case #6, test the correct date. PASSED.");
         else
             System.out.println("test case #6, test the correct date. FAILED.");
