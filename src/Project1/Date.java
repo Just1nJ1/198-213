@@ -49,7 +49,7 @@ public class Date implements Comparable<Date>{
             case 11:
                 if (day > 30) { return false; }
                 break;
-            default:
+            case 2:
                 boolean leap = false;
                 if (year % Date.QUADRENNIAL == 0){
                     if (year % Date.CENTENNIAL == 0){
@@ -60,6 +60,8 @@ public class Date implements Comparable<Date>{
                 }
                 if (!leap && day > 28) { return false; }
                 if (leap && day > 29) { return false; }
+            default:
+                return false;
         }
         return true;
     }

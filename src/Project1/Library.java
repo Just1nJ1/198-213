@@ -35,6 +35,7 @@ public class Library {
             books[i] = books[i+1];
         }
         books[books.length - 1] = null;
+        numBooks --;
         return true;
     }
 
@@ -57,7 +58,9 @@ public class Library {
     public void print() {
         System.out.println("**List of books in the library.");
         for (Book b : books){
-            System.out.println(b);
+            if(b != null) {
+                System.out.println(b);
+            }
         }
         System.out.println("**End of list");
     } //print the list of books in the bag
@@ -76,7 +79,9 @@ public class Library {
         }
         System.out.println("**List of books by the dates published.");
         for (Book b : books){
-            System.out.println(b);
+            if(b != null) {
+                System.out.println(b);
+            }
         }
         System.out.println("**End of list");
     } //print the list of books by datePublished (ascending)
@@ -94,7 +99,9 @@ public class Library {
         }
         System.out.println("**List of books by the book numbers.");
         for (Book b : books){
-            System.out.println(b);
+            if(b != null) {
+                System.out.println(b);
+            }
         }
         System.out.println("**End of list");
     } //print the list of books by number (ascending)
