@@ -4,23 +4,23 @@ import java.util.Calendar;
 import java.util.StringTokenizer;
 
 /**
-(一句简介的话描述这个class的用途).
-(几句话详细描述这个class是怎么运作的)
-@author Haochen Ji, Yichen Chen
+ * The Date class is used to represent dates, including parsed input and formatted output.
+ * @author Haochen Ji, Yichen Chen
 */
 public class Date implements Comparable<Date>{
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
+    public static final int EFFECTIVESTARTINGYEAR = 1900;
 
     private int year;
     private int month;
     private int day;
-    
+
     /**
-    (一句简介的话描述这个Method    taking mm/dd/yyyy and create a Project1.Date object).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Create a date instance with a string in the specified format: mm/dd/yyyy
+     * @param date The formatted string
+     */
     public Date(String date) {
         StringTokenizer st = new StringTokenizer(date, "/");
         month = Integer.parseInt(st.nextToken());
@@ -29,9 +29,9 @@ public class Date implements Comparable<Date>{
     }
 
     /**
-    (一句简介的话描述这个Method    create an object with today’s date (see Calendar class)).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Create a date instance with current time
+     * A temporary instance used for {@link Date#isValid()}
+     */
     public Date() {
         Calendar current = Calendar.getInstance();
         this.year = current.get(Calendar.YEAR);
@@ -40,34 +40,34 @@ public class Date implements Comparable<Date>{
     }
 
     /**
-    (一句简介的话描述这个Method).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     *
+     * @return
+     */
     public boolean isValid() {
-        if (year < 1900) { return false; }
+        if (year < EFFECTIVESTARTINGYEAR) { return false; }
         Date present = new Date();
         if (year > present.year
         || (year == present.year && month > present.month)
         || (year == present.year && month == present.month && day > present.day)){
             return false;
         }
-        switch (month){
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
+        switch (month - 1){
+            case Calendar.JANUARY:
+            case Calendar.MARCH:
+            case Calendar.MAY:
+            case Calendar.JULY:
+            case Calendar.AUGUST:
+            case Calendar.OCTOBER:
+            case Calendar.DECEMBER:
                 if (day > 31) { return false; }
                 break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
+            case Calendar.APRIL:
+            case Calendar.JUNE:
+            case Calendar.SEPTEMBER:
+            case Calendar.NOVEMBER:
                 if (day > 30) { return false; }
                 break;
-            case 2:
+            case Calendar.FEBRUARY:
                 boolean leap = false;
                 if (year % Date.QUADRENNIAL == 0){
                     if (year % Date.CENTENNIAL == 0){
@@ -84,27 +84,29 @@ public class Date implements Comparable<Date>{
         return true;
     }
 
-    @Override
     /**
-    (一句简介的话描述这个Method).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Returns a formatted string includes its month, day, and year: mm/dd/yyyy
+     * @return the string representation of the date
+     */
+    @Override
     public String toString() {
         return Integer.toString(month) + "/" + Integer.toString(day) + "/" + Integer.toString(year);
     }
 
-    @Override
     /**
-    (一句简介的话描述这个Method).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
-    public int compareTo(Date o) {
-        if (year < o.year)  { return -1; }
-        if (year > o.year)  { return  1; }
-        if (month < o.month){ return -1; }
-        if (month > o.month){ return  1; }
-        if (day < o.day)    { return -1; }
-        if (day > o.day)    { return  1; }
+     * Compares date instances
+     * First compare the years, then the months if the years are the same, and then the days if the months are the same
+     * @param date Another date for comparison
+     * @return 0 if two dates are the same day; -1 if this date is earlier than param date; 1 otherwise
+     */
+    @Override
+    public int compareTo(Date date) {
+        if (year < date.year)  { return -1; }
+        if (year > date.year)  { return  1; }
+        if (month < date.month){ return -1; }
+        if (month > date.month){ return  1; }
+        if (day < date.day)    { return -1; }
+        if (day > date.day)    { return  1; }
         return 0;
     }
 }

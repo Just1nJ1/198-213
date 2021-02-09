@@ -12,7 +12,7 @@ public class Book {
     private Date datePublished;
 
     /**
-     * Create a book with the specified name and publication date.
+     * Create a book instance with the specified name and publication date.
      * @param name The book's name
      * @param date The book's publication date
     */
@@ -24,7 +24,7 @@ public class Book {
     }
     
     /**
-     * Create a book with its specific serial number
+     * Create a book instance with its specific serial number
      * A temporary instance used for {@link Library#find(Book)}
      * @param number The number of a particular book
     */
@@ -33,7 +33,7 @@ public class Book {
     }
 
     /**
-     * Comparing book instances by comparing their number
+     * Compares book instances by comparing their number
      * @param obj Another book for comparison
      * @return true if the other book's number is equal to this book's number
      */
