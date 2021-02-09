@@ -14,6 +14,10 @@ public class Book {
         this.datePublished = date;
     }
 
+    public Book(String number){
+        this.number = number;
+    }
+
     @Override
     public boolean equals(Object obj){
         if (obj instanceof Book){
@@ -24,7 +28,10 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book#" + number + "::" + name + "::" + datePublished;
+        return "Book#" + number +
+                "::" + name +
+                "::" + datePublished +
+                "::" + (!isCheckedOut() ? "is available" : "is checked out.");
     }
 
     public boolean isCheckedOut() {

@@ -31,7 +31,7 @@ public class Library {
     public boolean remove(Book book) {
         int index = find(book);
         if (index == -1){ return false; }
-        for (int i = index; i < books.length; i ++){
+        for (int i = index; i < books.length - 1; i ++){
             books[i] = books[i+1];
         }
         books[books.length - 1] = null;
@@ -55,9 +55,11 @@ public class Library {
     }
 
     public void print() {
+        System.out.println("**List of books in the library.");
         for (Book b : books){
             System.out.println(b);
         }
+        System.out.println("**End of list");
     } //print the list of books in the bag
 
     public void printByDate() {
@@ -72,6 +74,11 @@ public class Library {
                 }
             }
         }
+        System.out.println("**List of books by the dates published.");
+        for (Book b : books){
+            System.out.println(b);
+        }
+        System.out.println("**End of list");
     } //print the list of books by datePublished (ascending)
 
     public void printByNumber() {
@@ -85,5 +92,14 @@ public class Library {
                 }
             }
         }
+        System.out.println("**List of books by the book numbers.");
+        for (Book b : books){
+            System.out.println(b);
+        }
+        System.out.println("**End of list");
     } //print the list of books by number (ascending)
+
+    public int getNumBooks() {
+        return numBooks;
+    }
 }
