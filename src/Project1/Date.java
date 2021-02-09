@@ -11,7 +11,7 @@ public class Date implements Comparable<Date>{
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
-    public static final int EFFECTIVESTARTINGYEAR = 1900;
+    public static final int STARTING_YEAR = 1900;
 
     private int year;
     private int month;
@@ -44,7 +44,7 @@ public class Date implements Comparable<Date>{
      * @return
      */
     public boolean isValid() {
-        if (year < EFFECTIVESTARTINGYEAR) { return false; }
+        if (year < STARTING_YEAR) { return false; }
         Date present = new Date();
         if (year > present.year
         || (year == present.year && month > present.month)

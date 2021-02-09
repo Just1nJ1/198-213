@@ -1,39 +1,40 @@
 package Project1;
 
 /**
-(一句简介的话描述这个class的用途).
-(几句话详细描述这个class是怎么运作的)
-@author Haochen Ji, Yichen Chen
-*/
+ * The Library class is used to represent a Library containing with some books in {@link Library#books}
+ * @author Haochen Ji, Yichen Chen
+ */
 public class Library {
     private Book[] books; // array-based implementation of the bag data structure
     private int numBooks; // the number of books currently in the bag
+    public static final int NOT_FOUND = -1;
+    public static final int GROWTH_SIZE = 4;
 
     /**
-    (一句简介的话描述这个Method    default constructor to create an empty bag).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Creates a Library instance with empty books
+     */
     public Library() {
         books = new Book[0];
+        numBooks = 0;
     }
 
     /**
-    (一句简介的话描述这个Method    helper method to find a book in the bag).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Finds the index of the book in this library
+     * @param book A book has same number with the target
+     * @return The index of the target; NOT_FOUND if it is not found
+     */
     private int find(Book book) {
         for (int i = 0; i < books.length; i ++){
             if (books[i] != null && book.equals(books[i])){ return i; }
         }
-        return -1;
+        return NOT_FOUND;
     }
 
     /**
-    (一句简介的话描述这个Method    helper method to grow the capacity by 4).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Increases the size of the books by GROWTH_SIZE and move all books from previous
+     */
     private void grow() {
-        Book[] temp = new Book[books.length + 4];
+        Book[] temp = new Book[books.length + GROWTH_SIZE];
         for (int i = 0; i < books.length; i ++){
             temp[i] = books[i];
         }
@@ -41,21 +42,22 @@ public class Library {
     }
 
     /**
-    (一句简介的话描述这个Method).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Adds the book into this library
+     * @param book The book to be added
+     */
     public void add(Book book) {
         if (books.length == numBooks){ grow(); }
         books[numBooks++] = book;
     }
 
     /**
-    (一句简介的话描述这个Method).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q)   @return true if checking out is successful, false otherwise)
-    */
+     * Removes the book from this library
+     * @param book A book has same number with the target
+     * @return true if it removes that book successfully; false otherwise
+     */
     public boolean remove(Book book) {
         int index = find(book);
-        if (index == -1){ return false; }
+        if (index == NOT_FOUND){ return false; }
         for (int i = index; i < books.length - 1; i ++){
             books[i] = books[i+1];
         }
@@ -65,33 +67,34 @@ public class Library {
     }
 
     /**
-    (一句简介的话描述这个Method).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Checks out the book from this library
+     * @param book A book has same number with the target
+     * @return true if it checks out that book successfully; false otherwise
+     */
     public boolean checkOut(Book book) {
         int index = find(book);
-        if (index == -1){ return false; }
+        if (index == NOT_FOUND){ return false; }
         if (books[index].isCheckedOut()){ return false; }
         books[index].setCheckedOut(true);
         return true;
     }
 
     /**
-    (一句简介的话描述这个Method).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Returns the book in this library
+     * @param book A book has same number with the target
+     * @return true if it returns that book successfully; false otherwise
+     */
     public boolean returns(Book book) {
         int index = find(book);
-        if (index == -1){ return false; }
+        if (index == NOT_FOUND){ return false; }
         if (!books[index].isCheckedOut()){ return false; }
         books[index].setCheckedOut(false);
         return true;
     }
 
     /**
-    (一句简介的话描述这个Method    print the list of books in the bag).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Prints the list of books to the console with the current sequence
+     */
     public void print() {
         System.out.println("**List of books in the library.");
         for (Book b : books){
@@ -103,9 +106,8 @@ public class Library {
     }
 
     /**
-    (一句简介的话描述这个Method    print the list of books by datePublished (ascending)).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Prints the list of books by the dates published in ascending order
+     */
     public void printByDate() {
         for (int i = 0; i < numBooks; i++)
         {
@@ -128,9 +130,8 @@ public class Library {
     }
 
     /**
-    (一句简介的话描述这个Method    print the list of books by number (ascending)).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Prints the list of books by the book numbers in ascending order
+     */
     public void printByNumber() {
         for (int i = 0; i < numBooks; i++) {
             for (int j = i + 1; j < numBooks; j++) {
@@ -152,9 +153,9 @@ public class Library {
     }
 
     /**
-    (一句简介的话描述这个Method).
-    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
-    */
+     * Gets how many books there are in this library
+     * @return The number of books this library has
+     */
     public int getNumBooks() {
         return numBooks;
     }
