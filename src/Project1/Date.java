@@ -35,7 +35,7 @@ public class Date implements Comparable<Date>{
     public Date() {
         Calendar current = Calendar.getInstance();
         this.year = current.get(Calendar.YEAR);
-        this.month = current.get(Calendar.MONTH);
+        this.month = current.get(Calendar.MONTH) + 1;
         this.day = current.get(Calendar.DAY_OF_MONTH);
     }
 
@@ -78,6 +78,7 @@ public class Date implements Comparable<Date>{
                 }
                 if (!leap && day > 28) { return false; }
                 if (leap && day > 29) { return false; }
+                break;
             default:
                 return false;
         }
