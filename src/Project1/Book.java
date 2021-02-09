@@ -24,7 +24,7 @@ public class Book {
     }
     
     /**
-     * Create a book instance with its specific serial number
+     * Create a book instance with its specific serial number.
      * A temporary instance used for {@link Library#find(Book)}
      * @param number The number of a particular book
     */
@@ -33,7 +33,7 @@ public class Book {
     }
 
     /**
-     * Compares book instances by comparing their number
+     * Compares 2 book instances by comparing their number.
      * @param obj Another book for comparison
      * @return true if the other book's number is equal to this book's number
      */
@@ -46,7 +46,7 @@ public class Book {
     }
 
     /**
-     * Returns a formatted string includes its number, name, publication date, and its status
+     * Returns a textual representation of the Book object.
      * @return the string representation of this instance
      */
     @Override
@@ -58,6 +58,7 @@ public class Book {
     }
 
     /**
+     * Checks if the book has already been checked out.
      * @return Current checkedOut flag
      */
     public boolean isCheckedOut() {
@@ -65,7 +66,7 @@ public class Book {
     }
 
     /**
-     *
+     * Sets the checkedOut flag to a given status, true or false.
      * @param checkedOut Change checkedOut flag
      */
     public void setCheckedOut(boolean checkedOut) {
@@ -73,7 +74,7 @@ public class Book {
     }
 
     /**
-     *
+     * Returns the publish date of the book.
      * @return This book's publication date
      */
     public Date getDatePublished() {
@@ -81,7 +82,7 @@ public class Book {
     }
 
     /**
-     *
+     * Returns the book number.
      * @return This book's number
      */
     public String getNumber() {

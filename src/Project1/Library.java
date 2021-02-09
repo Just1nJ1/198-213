@@ -1,7 +1,7 @@
 package Project1;
 
 /**
- * The Library class is used to represent a Library containing with some books in {@link Library#books}
+ * This class defines the ADT Library; an instance of Library can hold a list of book objects.
  * @author Haochen Ji, Yichen Chen
  */
 public class Library {
@@ -11,7 +11,7 @@ public class Library {
     public static final int GROWTH_SIZE = 4;
 
     /**
-     * Creates a Library instance with empty books
+     * Creates a Library instance with empty books.
      */
     public Library() {
         books = new Book[0];
@@ -19,7 +19,7 @@ public class Library {
     }
 
     /**
-     * Finds the index of the book in this library
+     * Finds the index of the book in this library.
      * @param book A book has same number with the target
      * @return The index of the target; NOT_FOUND if it is not found
      */
@@ -31,7 +31,7 @@ public class Library {
     }
 
     /**
-     * Increases the size of the books by GROWTH_SIZE and move all books from previous
+     * Increases the size of the books by GROWTH_SIZE and move all books from previous.
      */
     private void grow() {
         Book[] temp = new Book[books.length + GROWTH_SIZE];
@@ -42,7 +42,7 @@ public class Library {
     }
 
     /**
-     * Adds the book into this library
+     * Adds the book into this library.
      * @param book The book to be added
      */
     public void add(Book book) {
@@ -51,7 +51,7 @@ public class Library {
     }
 
     /**
-     * Removes the book from this library
+     * Removes the book from this library.
      * @param book A book has same number with the target
      * @return true if it removes that book successfully; false otherwise
      */
@@ -67,7 +67,7 @@ public class Library {
     }
 
     /**
-     * Checks out the book from this library
+     * Checks out the book from this library.
      * @param book A book has same number with the target
      * @return true if it checks out that book successfully; false otherwise
      */
@@ -80,7 +80,7 @@ public class Library {
     }
 
     /**
-     * Returns the book in this library
+     * Returns the book in this library.
      * @param book A book has same number with the target
      * @return true if it returns that book successfully; false otherwise
      */
@@ -93,7 +93,7 @@ public class Library {
     }
 
     /**
-     * Prints the list of books to the console with the current sequence
+     * Prints the list of books to the console with the current sequence.
      */
     public void print() {
         System.out.println("**List of books in the library.");
@@ -106,7 +106,7 @@ public class Library {
     }
 
     /**
-     * Prints the list of books by the dates published in ascending order
+     * Prints the list of books by the dates published in ascending order.
      */
     public void printByDate() {
         for (int i = 0; i < numBooks; i++)
@@ -130,7 +130,7 @@ public class Library {
     }
 
     /**
-     * Prints the list of books by the book numbers in ascending order
+     * Prints the list of books by the book numbers in ascending order.
      */
     public void printByNumber() {
         for (int i = 0; i < numBooks; i++) {
@@ -153,7 +153,7 @@ public class Library {
     }
 
     /**
-     * Gets how many books there are in this library
+     * Gets how many books there are in this library.
      * @return The number of books this library has
      */
     public int getNumBooks() {

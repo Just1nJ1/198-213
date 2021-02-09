@@ -1,7 +1,7 @@
 package Project1;
 
 /**
- * Run Kiosk of the Project 1
+ * This is a driver class to run Project 1
  * @author Haochen Ji, Yichen Chen
 */
 public class RunProject1 {

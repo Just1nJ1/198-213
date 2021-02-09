@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.StringTokenizer;
 
 /**
- * The Date class is used to represent dates, including parsed input and formatted output.
+ * This class implements a Date object with year, month, and day.
  * @author Haochen Ji, Yichen Chen
 */
 public class Date implements Comparable<Date>{
@@ -18,7 +18,7 @@ public class Date implements Comparable<Date>{
     private int day;
 
     /**
-     * Create a date instance with a string in the specified format: mm/dd/yyyy
+     * Create a date instance with a string in the specified format: mm/dd/yyyy.
      * @param date The formatted string
      */
     public Date(String date) {
@@ -29,7 +29,7 @@ public class Date implements Comparable<Date>{
     }
 
     /**
-     * Create a date instance with current time
+     * Create a date instance with current time.
      * A temporary instance used for {@link Date#isValid()}
      */
     public Date() {
@@ -40,8 +40,8 @@ public class Date implements Comparable<Date>{
     }
 
     /**
-     *
-     * @return
+     * Checks whether this date is valid or not.
+     * @return true if this date is valid; false otherwise.
      */
     public boolean isValid() {
         if (year < STARTING_YEAR) { return false; }
@@ -85,8 +85,8 @@ public class Date implements Comparable<Date>{
     }
 
     /**
-     * Returns a formatted string includes its month, day, and year: mm/dd/yyyy
-     * @return the string representation of the date
+     * Returns a textual representation of the Date object.
+     * @return the textual representation of the date
      */
     @Override
     public String toString() {
@@ -94,8 +94,8 @@ public class Date implements Comparable<Date>{
     }
 
     /**
-     * Compares date instances
-     * First compare the years, then the months if the years are the same, and then the days if the months are the same
+     * Compares date instances.
+     * First compare the years, then the months if the years are the same, and then the days if the months are the same.
      * @param date Another date for comparison
      * @return 0 if two dates are the same day; -1 if this date is earlier than param date; 1 otherwise
      */
