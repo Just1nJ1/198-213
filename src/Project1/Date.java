@@ -11,7 +11,7 @@ public class Date implements Comparable<Date>{
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
-    public static final int STARTING_YEAR = 1900;
+    public static final int EFFECTIVESTARTINGYEAR = 1900;
 
     private int year;
     private int month;
@@ -44,7 +44,7 @@ public class Date implements Comparable<Date>{
      * @return
      */
     public boolean isValid() {
-        if (year < STARTING_YEAR) { return false; }
+        if (year < EFFECTIVESTARTINGYEAR) { return false; }
         Date present = new Date();
         if (year > present.year
         || (year == present.year && month > present.month)
@@ -108,5 +108,66 @@ public class Date implements Comparable<Date>{
         if (day < date.day)    { return -1; }
         if (day > date.day)    { return  1; }
         return 0;
+    }
+    
+    /**
+     * Testbed main to exercise the methods in this class.
+     *
+     * @param arg command line arguments
+     */
+    public static void main(String arg[]) {
+        //Testing the isValid() method
+        //test case #1, test the wrong day in a date.
+        System.out.println("running test case #1");
+        Boolean result = new Date("2/29/2009").isValid();
+        if(!result)
+            System.out.println("test case #1, test the wrong day in a date. PASSED.");
+        else
+            System.out.println("test case #1, test the wrong day in a date. FAILED.");
+        
+        //Testing the isValid() method
+        //test case #2, test the wrong month in a date.
+        System.out.println("running test case #2");
+        Boolean result = new Date("31/2/2000").isValid();
+        if(!result)
+            System.out.println("test case #2, test the wrong month in a date. PASSED.");
+        else
+            System.out.println("test case #2, test the wrong month in a date. FAILED.");
+        
+        //Testing the isValid() method
+        //test case #3, test the year which is more than now in a date.
+        System.out.println("running test case #3");
+        Boolean result = new Date("2/29/2009").isValid();
+        if(!result)
+            System.out.println("test case #3, test the year which is more than now in a date. PASSED.");
+        else
+            System.out.println("test case #3, test the year which is more than now in a date. FAILED.");
+        
+        //Testing the isValid() method
+        //test case #4, test the wrong day in a date.
+        System.out.println("running test case #4");
+        Boolean result = new Date("2/29/2001").isValid();
+        if(!result)
+            System.out.println("test case #4, test the wrong day in a date. PASSED.");
+        else
+            System.out.println("test case #4, test the wrong day in a date. FAILED.");
+        
+        //Testing the isValid() method
+        //test case #5, test the correct day in leap year.
+        System.out.println("running test case #5");
+        Boolean result = new Date("2/29/2000").isValid();
+        if(!result)
+            System.out.println("test case #5, test the correct day in leap year. PASSED.");
+        else
+            System.out.println("test case #5, test the correct day in leap year. FAILED.");
+        
+        //Testing the isValid() method
+        //test case #6, test the correct date.
+        System.out.println("running test case #6");
+        Boolean result = new Date("3/31/2008").isValid();
+        if(!result)
+            System.out.println("test case #6, test the correct date. PASSED.");
+        else
+            System.out.println("test case #6, test the correct date. FAILED.");
     }
 }
