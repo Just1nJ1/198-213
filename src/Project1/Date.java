@@ -3,6 +3,11 @@ package Project1;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
+/**
+(一句简介的话描述这个class的用途).
+(几句话详细描述这个class是怎么运作的)
+@author Haochen Ji, Yichen Chen
+*/
 public class Date implements Comparable<Date>{
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
@@ -11,20 +16,33 @@ public class Date implements Comparable<Date>{
     private int year;
     private int month;
     private int day;
+    
+    /**
+    (一句简介的话描述这个Method    taking mm/dd/yyyy and create a Project1.Date object).
+    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
+    */
     public Date(String date) {
         StringTokenizer st = new StringTokenizer(date, "/");
         month = Integer.parseInt(st.nextToken());
         day = Integer.parseInt(st.nextToken());
         year = Integer.parseInt(st.nextToken());
-    } //taking mm/dd/yyyy and create a Project1.Date object
+    }
 
+    /**
+    (一句简介的话描述这个Method    create an object with today’s date (see Calendar class)).
+    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
+    */
     public Date() {
         Calendar current = Calendar.getInstance();
         this.year = current.get(Calendar.YEAR);
         this.month = current.get(Calendar.MONTH);
         this.day = current.get(Calendar.DAY_OF_MONTH);
-    } //create an object with today’s date (see Calendar class)
+    }
 
+    /**
+    (一句简介的话描述这个Method).
+    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
+    */
     public boolean isValid() {
         if (year < 1900) { return false; }
         Date present = new Date();
@@ -67,11 +85,19 @@ public class Date implements Comparable<Date>{
     }
 
     @Override
+    /**
+    (一句简介的话描述这个Method).
+    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
+    */
     public String toString() {
         return Integer.toString(month) + "/" + Integer.toString(day) + "/" + Integer.toString(year);
     }
 
     @Override
+    /**
+    (一句简介的话描述这个Method).
+    (有需要可以在这对这个Method里的一些东西做解释，比如要对参数param解释：@param 巴拉巴拉巴拉，一个解释一行q(≧▽≦q))
+    */
     public int compareTo(Date o) {
         if (year < o.year)  { return -1; }
         if (year > o.year)  { return  1; }
