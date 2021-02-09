@@ -1,7 +1,7 @@
 package Project1;
 
 /**
- * Project 1
+ * Run Kiosk of the Project 1
  * @author Haochen Ji, Yichen Chen
 */
 public class RunProject1 {

@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 /**
+ * Retrieving user input commands from console and executing them, until quit command.
  * @author Haochen Ji, Yichen Chen
 */
 public class Kiosk {
