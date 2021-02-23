@@ -1,7 +1,7 @@
 package Project2;
 
 /**
- * (...)
+ * Define the profile of an employee with the following.
  * @author Haochen Ji, Yichen Chen
  */
 public class Profile {
@@ -26,16 +26,16 @@ public class Profile {
     public Date getDateHired(){ return dateHired; }
 
     /**
-     *
+     * Output a string.
      * @return
      */
     @Override
     public String toString() {
         return name + "::" + department + "::" + dateHired;
-    } //(...)
+    }
 
     /**
-     *
+     * Make comparation.
      * @param obj
      * @return
      */
@@ -45,5 +45,5 @@ public class Profile {
             && name.equals(((Profile) obj).name)
             && department.equals(((Profile) obj).department)
             && dateHired.compareTo(((Profile) obj).dateHired) == 0;
-    } //(...)
+    }
 }
