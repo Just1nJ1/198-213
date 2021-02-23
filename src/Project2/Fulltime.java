@@ -1,7 +1,7 @@
 package Project2;
 
 /**
- * (...)
+ * Includes specific data and operations to a full-time employee.
  * @author Haochen Ji, Yichen Chen
  */
 public class Fulltime extends Employee {
@@ -20,7 +20,7 @@ public class Fulltime extends Employee {
     }
 
     /**
-     *
+     * Output a string.
      * @return
      */
     @Override
@@ -29,7 +29,7 @@ public class Fulltime extends Employee {
     }
 
     /**
-     *
+     * Make comparation.
      * @param obj
      * @return
      */
@@ -39,7 +39,7 @@ public class Fulltime extends Employee {
     }
 
     /**
-     *
+     * Calculate payments.
      */
     @Override
     public void calculatePayment() {
