@@ -1,5 +1,9 @@
 package Project2;
 
+/**
+ * (...)
+ * @author Haochen Ji, Yichen Chen
+ */
 public class Profile {
     private String name;
     private String department;
@@ -7,7 +11,7 @@ public class Profile {
     @Override
     public String toString() {
         return super.toString();
-    }
+    } //(...)
 
     @Override
     public boolean equals(Object obj) {
@@ -15,5 +19,5 @@ public class Profile {
             && name.equals(((Profile) obj).name)
             && department.equals(((Profile) obj).department)
             && dateHired.equals(((Profile) obj).dateHired);
-    }
+    } //(...)
 }
