@@ -1,7 +1,7 @@
 package Project2;
 
 /**
- * (...)
+ * Extends the Fulltime class and includes specific data and operations to a full-time employee with a management role.
  * @author Haochen Ji, Yichen Chen
  */
 public class Management extends Fulltime {
@@ -41,7 +41,7 @@ public class Management extends Fulltime {
     }
 
     /**
-     *
+     * Output a string.
      * @return
      */
     @Override
@@ -50,7 +50,7 @@ public class Management extends Fulltime {
     }
 
     /**
-     *
+     * Make comparation.
      * @param obj
      * @return
      */
@@ -60,7 +60,7 @@ public class Management extends Fulltime {
     }
 
     /**
-     *
+     * Calculate payments.
      */
     @Override
     public void calculatePayment() {
