@@ -1,5 +1,8 @@
 package Project2;
 
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
 /**
  * (...)
  * @author Haochen Ji, Yichen Chen
@@ -7,121 +10,242 @@ package Project2;
 public class PayrollProcessing {
 
     public void run() {
-        System.out.println("Library Kiosk running.");
+        System.out.println("Payroll Processing starts.");
 
-        Library lib = new Library();            // Library instance
+        Company company = new Company();            // Library instance
         Scanner sc = new Scanner(System.in);    // Scanner instance; Scan from console
-        String command = sc.nextLine();         // Stores the first command from console
+        String input = sc.nextLine();         // Stores the first command from console
         String number = "";                     // Stores the number of the book if necessary
         StringTokenizer st = null;              // StringTokenizer variable without initial value
 
         // Stop the loop when the command is Q; Get next line and store it in command variable each loop
-        for (; !command.equals("Q"); command = sc.nextLine()){
+        for (; !input.equals("Q"); input = sc.nextLine()){
 
-            st = new StringTokenizer(command, ",");     // ST instance with console input
+            st = new StringTokenizer(input, " ");     // ST instance with console input
+            String command = st.nextToken();
+            String name;
+            String department;
+            Date date;
+            int salary;
 
-            switch (st.nextToken()){            // switch-case for different command
-                case "A":                       // Add
-                    if (st.countTokens() != 2){ // Check that the number of parameters is correct
+            switch (command){                   // switch-case for different command
+                case "AP":                      // Add Part time employee
+                    if (st.countTokens() != 4){ // Check that the number of parameters is correct
                         System.out.println("Invalid command!");
                         continue;
                     }
 
-                    String name = st.nextToken();   // Get book's name
-                    Date date = new Date(st.nextToken());   // Get book's publication date
+                    name = st.nextToken();
+                    department = st.nextToken();
+                    date = new Date(st.nextToken());
+                    double payrate = Double.parseDouble(st.nextToken());
                     if (!date.isValid()){           // Check if the date is valid
-                        System.out.println("Invalid Date!");
+                        System.out.println(date.toString() + " is not a valid date!");
                         continue;
                     }
 
-                    lib.add(new Book(name, date));  // Add this book into the library
-                    System.out.println(name + " added to the Library.");
+                    if (payrate < 0){
+                        System.out.println("Pay rate cannot be negative.");
+                        continue;
+                    }
+
+                    if (!(department.equals("ECE") || department.equals("CS") || department.equals("IT"))){
+                        System.out.println("invalid department code.");
+                        continue;
+                    }
+
+                    if (!company.add(new Parttime(new Profile(name, department, date), payrate))){
+                        System.out.println("Employee is already in the list.");
+                        continue;
+                    }
+                    System.out.println("Employee added.");
                     break;
 
-                case "R":                       // Remove
-                    if (st.countTokens() != 1){
+                case "AF":                      // Add Full time employee
+                    if (st.countTokens() != 4){ // Check that the number of parameters is correct
                         System.out.println("Invalid command!");
                         continue;
                     }
 
-                    number = st.nextToken();
-                    if (!lib.remove(new Book(number))){
-                        System.out.println("Unable to remove, the library does not have this book.");
+                    name = st.nextToken();
+                    department = st.nextToken();
+                    date = new Date(st.nextToken());
+                    salary = Integer.parseInt(st.nextToken());
+
+                    if (!date.isValid()){           // Check if the date is valid
+                        System.out.println(date.toString() + " is not a valid date!");
                         continue;
                     }
-                    System.out.println("Book# " + number + " removed.");
+
+                    if (salary < 0){
+                        System.out.println("Salary cannot be negative.");
+                        continue;
+                    }
+
+                    if (!(department.equals("ECE") || department.equals("CS") || department.equals("IT"))){
+                        System.out.println("invalid department code.");
+                        continue;
+                    }
+
+                    if (!company.add(new Fulltime(new Profile(name, department, date), salary))){
+                        System.out.println("Employee is already in the list.");
+                        continue;
+                    }
+                    System.out.println("Employee added.");
                     break;
 
-                case "O":                       // Check out
-                    if (st.countTokens() != 1){
+                case "AM":                      // Add Full time employee
+                    if (st.countTokens() != 5){ // Check that the number of parameters is correct
                         System.out.println("Invalid command!");
                         continue;
                     }
 
-                    number = st.nextToken();
-                    if (!lib.checkOut(new Book(number))){
-                        System.out.println("Book#" + number + " is not available.");
+                    name = st.nextToken();
+                    department = st.nextToken();
+                    date = new Date(st.nextToken());
+                    salary = Integer.parseInt(st.nextToken());
+                    int roles = Integer.parseInt(st.nextToken());
+
+                    if (!date.isValid()){           // Check if the date is valid
+                        System.out.println(date.toString() + " is not a valid date!");
                         continue;
                     }
-                    System.out.println("You've checked out Book#" + number + ". Enjoy!");
+
+                    if (salary < 0){
+                        System.out.println("Salary cannot be negative.");
+                        continue;
+                    }
+
+                    if (!(department.equals("ECE") || department.equals("CS") || department.equals("IT"))){
+                        System.out.println("invalid department code.");
+                        continue;
+                    }
+
+                    if (roles < 1 || roles > 3){
+                        System.out.println("invalid management code.");
+                        continue;
+                    }
+
+                    if (!company.add(new Management(new Profile(name, department, date), salary, roles))){
+                        System.out.println("Employee is already in the list.");
+                        continue;
+                    }
+                    System.out.println("Employee added.");
                     break;
 
-                case "I":                       // Return
-                    if (st.countTokens() != 1){
+                case "R":
+                    if (company.getNumEmployee() == 0){
+                        System.out.println("Employee database is empty.");
+                        break;
+                    }
+
+                    if (st.countTokens() != 3){ // Check that the number of parameters is correct
                         System.out.println("Invalid command!");
                         continue;
                     }
 
-                    number = st.nextToken();
-                    if (!lib.returns(new Book(number))){
-                        System.out.println("Unable to return Book#" + number + ".");
+                    name = st.nextToken();
+                    department = st.nextToken();
+                    date = new Date(st.nextToken());
+
+                    if (!company.remove(new Employee(new Profile(name, department, date)))){
+                        System.out.println("Employee does not exist.");
                         continue;
                     }
-                    System.out.println("Book#" + number + " return has completed. Thanks!");
+
+                    System.out.println("Employee removed.");
                     break;
 
-                case "PA":                      // Print (PA)
-                    if (st.countTokens() != 0){
+                case "C":
+                    if (company.getNumEmployee() == 0){
+                        System.out.println("Employee database is empty.");
+                        break;
+                    }
+
+                    if (st.countTokens() != 0){ // Check that the number of parameters is correct
                         System.out.println("Invalid command!");
                         continue;
                     }
 
-                    if (lib.getNumBooks() == 0){
-                        System.out.println("Library catalog is empty.");
-                    } else {
-                        lib.print();
-                    }
+                    company.processPayments();
+
+                    System.out.println("Calculation of employee payments is done.");
                     break;
 
-                case "PD":                      // Print (PD)
-                    if (st.countTokens() != 0){
+                case "S":
+                    if (company.getNumEmployee() == 0){
+                        System.out.println("Employee database is empty.");
+                        break;
+                    }
+
+                    if (st.countTokens() != 4){ // Check that the number of parameters is correct
                         System.out.println("Invalid command!");
                         continue;
                     }
 
-                    if (lib.getNumBooks() == 0){
-                        System.out.println("Library catalog is empty.");
-                    } else {
-                        lib.printByDate();
-                    }
-                    break;
+                    name = st.nextToken();
+                    department = st.nextToken();
+                    date = new Date(st.nextToken());
+                    int hours = Integer.parseInt(st.nextToken());
 
-                case "PN":                      // Print (PN)
-                    if (st.countTokens() != 0){
-                        System.out.println("Invalid command!");
+                    if (!date.isValid()){           // Check if the date is valid
+                        System.out.println(date.toString() + " is not a valid date!");
                         continue;
                     }
 
-                    if (lib.getNumBooks() == 0){
-                        System.out.println("Library catalog is empty.");
-                    } else {
-                        lib.printByNumber();
+                    if (hours < 0){
+                        System.out.println("Working hours cannot be negative.");
+                        continue;
                     }
+
+                    if (hours > 100){
+                        System.out.println("Invalid Hours: over 100.");
+                        continue;
+                    }
+
+                    if (!(department.equals("ECE") || department.equals("CS") || department.equals("IT"))){
+                        System.out.println("invalid department code.");
+                        continue;
+                    }
+
+                    if (!company.setHours(new Parttime(new Profile(name, department, date), hours))){
+                        System.out.println("Employee does not exist.");
+                        continue;
+                    }
+                    System.out.println("Employee added.");
                     break;
+
+                case "PA":
+                    if (company.getNumEmployee() == 0){
+                        System.out.println("Employee database is empty.");
+                        break;
+                    }
+
+                    company.print();
+                    break;
+
+                case "PH":
+                    if (company.getNumEmployee() == 0){
+                        System.out.println("Employee database is empty.");
+                        break;
+                    }
+
+                    company.printByDate();
+                    break;
+
+                case "PD":
+                    if (company.getNumEmployee() == 0){
+                        System.out.println("Employee database is empty.");
+                        break;
+                    }
+
+                    company.printByDepartment();
+                    break;
+
                 default:
-                    System.out.println("Invalid command!");
+                    System.out.println("Command '" + command + "' not supported!");
             }
         }
-        System.out.println("Kiosk session ended.");
+        System.out.println("Payroll Processing completed.");
     }
 }
