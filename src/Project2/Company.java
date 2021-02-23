@@ -1,16 +1,20 @@
 package Project2;
 
+/**
+ * (...)
+ * @author Haochen Ji, Yichen Chen
+ */
 public class Company {
     private Employee[] emplist;
     private int numEmployee;
 
     private int find(Employee employee) {
 
-    }
+    } //(...)
 
     private void grow() {
 
-    }
+    } //(...)
 
     public boolean add(Employee employee) {
 
