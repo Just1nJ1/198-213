@@ -1,7 +1,7 @@
 package Project2;
 
 /**
- * (...)
+ * Extends the Employee class and includes specific data and operations to a part-time employee.
  * @author Haochen Ji, Yichen Chen
  */
 public class Parttime extends Employee {
@@ -43,7 +43,7 @@ public class Parttime extends Employee {
     }
 
     /**
-     *
+     * Output a string.
      * @return
      */
     @Override
@@ -52,7 +52,7 @@ public class Parttime extends Employee {
     }
 
     /**
-     *
+     * Make comparation.
      * @param obj
      * @return
      */
@@ -62,7 +62,7 @@ public class Parttime extends Employee {
     }
 
     /**
-     *
+     * Calculate payments.
      */
     @Override
     public void calculatePayment() {
