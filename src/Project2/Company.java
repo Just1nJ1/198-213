@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * (...)
+ * An array-based container class that implements the employee database.
  * @author Haochen Ji, Yichen Chen
  */
 public class Company {
@@ -40,7 +40,7 @@ public class Company {
     }
 
     /**
-     *
+     * Check the profile before adding.
      * @param employee
      * @return
      */
@@ -54,7 +54,7 @@ public class Company {
     }
 
     /**
-     *
+     * Maintain the original sequence.
      * @param employee
      * @return
      */
@@ -68,7 +68,7 @@ public class Company {
     }
 
     /**
-     *
+     * Set working hours for a part time.
      * @param employee
      * @return
      */
@@ -77,23 +77,23 @@ public class Company {
         if (index == -1 || !(new Parttime().equals(employee))){ return false; }
         ((Parttime)emplist[index]).setHours(((Parttime)employee).getHours());
         return true;
-    } //set working hours for a part time
+    }
 
     /**
-     *
+     * Process payments for all employees.
      */
     public void processPayments() {
         for (int i = 0; i < numEmployee; i ++){
             emplist[i].calculatePayment();
         }
-    } //process payments for all employees
+    }
 
     public int getNumEmployee() {
         return numEmployee;
     }
 
     /**
-     *
+     * Print earning statements for all employees.
      */
     public void print() {
         System.out.println("--Printing earning statements for all employees--");
@@ -102,10 +102,10 @@ public class Company {
                 System.out.println(e);
             }
 }
-    } //print earning statements for all employees
+    }
 
     /**
-     *
+     * Print earning stateme by departmentnts.
      */
     public void printByDepartment() {
         Arrays.sort(emplist, new Comparator<Employee>() {
@@ -117,10 +117,10 @@ public class Company {
             }
         });
         print();
-    } //print earning stateme by departmentnts
+    }
 
     /**
-     *
+     * Print earning statements by date hired.
      */
     public void printByDate() {
         Arrays.sort(emplist, new Comparator<Employee>() {
@@ -132,5 +132,5 @@ public class Company {
             }
         });
         print();
-    } //print earning statements by date hired
+    }
 }
