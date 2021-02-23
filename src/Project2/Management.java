@@ -5,6 +5,10 @@ package Project2;
  * @author Haochen Ji, Yichen Chen
  */
 public class Management extends Fulltime {
+    public static final double MANAGER_COMPENSATION = 192.31;
+    public static final double DEPARTMENT_HEAD_COMPENSATION = 365.38;
+    public static final double DIRECTOR_COMPENSATION = 461.54;
+
     private int roles;
     private String header;
     private double compensation;
@@ -26,15 +30,15 @@ public class Management extends Fulltime {
         switch (roles){
             case 1:
                 header =  "Manager";
-                compensation = 192.31;
+                compensation = MANAGER_COMPENSATION;
                 break;
             case 2:
                 header =  "DepartmentHead";
-                compensation = 365.38;
+                compensation = DEPARTMENT_HEAD_COMPENSATION;
                 break;
             case 3:
                 header =  "Director";
-                compensation = 461.54;
+                compensation = DIRECTOR_COMPENSATION;
                 break;
             default:
         }
