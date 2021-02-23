@@ -1,5 +1,9 @@
 package Project2;
 
+/**
+ * (...)
+ * @author Haochen Ji, Yichen Chen
+ */
 public class PayrollProcessing {
 
     public void run() {
