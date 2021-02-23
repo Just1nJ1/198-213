@@ -1,7 +1,7 @@
 package Project2;
 
 /**
- * (...)
+ * Defines the common data and operations for all employee type.
  * @author Haochen Ji, Yichen Chen
  */
 public class Employee {
@@ -39,7 +39,7 @@ public class Employee {
     }
 
     /**
-     *
+     * Make comparing.
      * @param obj
      * @return
      */
@@ -49,9 +49,9 @@ public class Employee {
     }
 
     /**
-     *
+     * Calculate payments.
      */
     public void calculatePayment(){
 
-    } //(...)
+    }
 }
