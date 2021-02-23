@@ -9,6 +9,12 @@ public class Profile {
     private String department;
     private Date dateHired;
 
+    /**
+     *
+     * @param name
+     * @param department
+     * @param date
+     */
     public Profile(String name, String department, Date date){
         this.name = name;
         this.department = department;
@@ -19,11 +25,20 @@ public class Profile {
 
     public Date getDateHired(){ return dateHired; }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return name + "::" + department + "::" + dateHired;
     } //(...)
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Profile

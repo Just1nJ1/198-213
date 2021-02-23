@@ -39,6 +39,11 @@ public class Company {
         emplist = temp;
     }
 
+    /**
+     *
+     * @param employee
+     * @return
+     */
     public boolean add(Employee employee) {
         if (find(employee) == -1){
             if (numEmployee == emplist.length){ grow(); }
@@ -48,6 +53,11 @@ public class Company {
         return false;
     }
 
+    /**
+     *
+     * @param employee
+     * @return
+     */
     public boolean remove(Employee employee) {
         int index = find(employee);
         if (index == -1){ return false; }
@@ -57,6 +67,11 @@ public class Company {
         return true;
     }
 
+    /**
+     *
+     * @param employee
+     * @return
+     */
     public boolean setHours(Employee employee) {
         int index = find(employee);
         if (index == -1 || !(new Parttime().equals(employee))){ return false; }
@@ -64,6 +79,9 @@ public class Company {
         return true;
     } //set working hours for a part time
 
+    /**
+     *
+     */
     public void processPayments() {
         for (int i = 0; i < numEmployee; i ++){
             emplist[i].calculatePayment();
@@ -74,6 +92,9 @@ public class Company {
         return numEmployee;
     }
 
+    /**
+     *
+     */
     public void print() {
         System.out.println("--Printing earning statements for all employees--");
         for (Employee e : emplist){
@@ -83,6 +104,9 @@ public class Company {
 }
     } //print earning statements for all employees
 
+    /**
+     *
+     */
     public void printByDepartment() {
         Arrays.sort(emplist, new Comparator<Employee>() {
             @Override
@@ -95,6 +119,9 @@ public class Company {
         print();
     } //print earning stateme by departmentnts
 
+    /**
+     *
+     */
     public void printByDate() {
         Arrays.sort(emplist, new Comparator<Employee>() {
             @Override

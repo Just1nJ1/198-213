@@ -9,8 +9,17 @@ public class Management extends Fulltime {
     private String header;
     private double compensation;
 
+    /**
+     *
+     */
     public Management(){}
 
+    /**
+     *
+     * @param p
+     * @param salary
+     * @param roles
+     */
     public Management(Profile p, int salary, int roles){
         super(p, salary);
         this.roles = roles;
@@ -31,16 +40,28 @@ public class Management extends Fulltime {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return super.toString() + "::" + header + " Compensation $" + compensation;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Management;
     }
 
+    /**
+     *
+     */
     @Override
     public void calculatePayment() {
         super.calculatePayment();

@@ -8,14 +8,27 @@ public class Parttime extends Employee {
     private int hours;
     private double payRate;
 
+    /**
+     *
+     */
     public Parttime(){ hours = 0; }
 
+    /**
+     *
+     * @param p
+     * @param payRate
+     */
     public Parttime(Profile p, double payRate){
         super(p);
         hours = 0;
         this.payRate = payRate;
     }
 
+    /**
+     *
+     * @param p
+     * @param hours
+     */
     public Parttime(Profile p, int hours){
         super(p);
         this.hours = hours;
@@ -29,16 +42,28 @@ public class Parttime extends Employee {
         return hours;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return super.toString() + "::PART TIME::Hourly Rate $" + String.format("%.2f", payRate) + "::Hours worked this period: " + hours;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Parttime;
     }
 
+    /**
+     *
+     */
     @Override
     public void calculatePayment() {
         double payment = hours * payRate;
