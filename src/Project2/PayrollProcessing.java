@@ -50,7 +50,7 @@ public class PayrollProcessing {
                     }
 
                     if (!(department.equals("ECE") || department.equals("CS") || department.equals("IT"))){
-                        System.out.println("invalid department code.");
+                        System.out.println("'" + department + "' is not a valid department code.");
                         continue;
                     }
 
@@ -83,7 +83,7 @@ public class PayrollProcessing {
                     }
 
                     if (!(department.equals("ECE") || department.equals("CS") || department.equals("IT"))){
-                        System.out.println("invalid department code.");
+                        System.out.println("'" + department + "' is not a valid department code.");
                         continue;
                     }
 
@@ -117,7 +117,7 @@ public class PayrollProcessing {
                     }
 
                     if (!(department.equals("ECE") || department.equals("CS") || department.equals("IT"))){
-                        System.out.println("invalid department code.");
+                        System.out.println("'" + department + "' is not a valid department code.");
                         continue;
                     }
 
@@ -204,7 +204,7 @@ public class PayrollProcessing {
                     }
 
                     if (!(department.equals("ECE") || department.equals("CS") || department.equals("IT"))){
-                        System.out.println("invalid department code.");
+                        System.out.println("'" + department + "' is not a valid department code.");
                         continue;
                     }
 
@@ -212,7 +212,7 @@ public class PayrollProcessing {
                         System.out.println("Employee does not exist.");
                         continue;
                     }
-                    System.out.println("Employee added.");
+                    System.out.println("Working hours set.");
                     break;
 
                 case "PA":

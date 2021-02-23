@@ -29,6 +29,6 @@ public class Profile {
         return obj instanceof Profile
             && name.equals(((Profile) obj).name)
             && department.equals(((Profile) obj).department)
-            && dateHired.equals(((Profile) obj).dateHired);
+            && dateHired.compareTo(((Profile) obj).dateHired) == 0;
     } //(...)
 }
