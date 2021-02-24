@@ -13,6 +13,9 @@ public class Company {
     private Employee[] emplist;
     private int numEmployee;
 
+    /**
+     * Constructs an Company instance with an empty list.
+     */
     public Company(){
         emplist = new Employee[4];
         numEmployee = 0;

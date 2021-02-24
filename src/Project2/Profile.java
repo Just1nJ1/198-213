@@ -21,8 +21,16 @@ public class Profile {
         this.dateHired = date;
     }
 
+    /**
+     * Gets department field.
+     * @return department field
+     */
     public String getDepartment(){ return department; }
 
+    /**
+     * Gets dateHired field.
+     * @return dateHired field
+     */
     public Date getDateHired(){ return dateHired; }
 
     /**

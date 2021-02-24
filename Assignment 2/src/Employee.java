@@ -14,10 +14,18 @@ public class Employee {
      */
     public Employee(Profile p){ profile = p; }
 
+    /**
+     * Gets employee's current payment.
+     * @return employee's current payment
+     */
     public double getPayment() {
         return payment;
     }
 
+    /**
+     * Sets employee's payment
+     * @param payment payment to be sat
+     */
     public void setPayment(double payment) {
         this.payment = payment;
     }
