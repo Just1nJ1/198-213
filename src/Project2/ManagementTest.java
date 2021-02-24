@@ -4,8 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * JUnit 5 tests for Management class
+ * @author Haochen Ji, Yichen Chen
+ */
 class ManagementTest {
-
+    /**
+     * Testing calculate function in Company.
+     */
     @Test
     void calculatePayment() {
         Company cp = new Company();

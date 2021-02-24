@@ -4,8 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * JUnit 5 tests for Company class
+ * @author Haochen Ji, Yichen Chen
+ */
 class CompanyTest {
-
+    /**
+     * Testing add function in Company.
+     */
     @Test
     void add() {
         Company cp = new Company();
@@ -22,6 +28,9 @@ class CompanyTest {
         assertTrue(cp.add(e5));     // Test case 3: Adding when the array is full
     }
 
+    /**
+     * Testing remove function in Company.
+     */
     @Test
     void remove() {
         Company cp = new Company();
@@ -33,6 +42,9 @@ class CompanyTest {
         assertFalse(cp.remove(e1)); // Test case 6: Removing a removed employee
     }
 
+    /**
+     * Testing setHours function in Company.
+     */
     @Test
     void setHours() {
         Company cp = new Company();

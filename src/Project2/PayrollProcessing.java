@@ -13,15 +13,14 @@ public class PayrollProcessing {
     public void run() {
         System.out.println("Payroll Processing starts.");
 
-        Company company = new Company();            // Library instance
+        Company company = new Company();        // Company instance
         Scanner sc = new Scanner(System.in);    // Scanner instance; Scan from console
-        String input = sc.nextLine();         // Stores the first command from console
-        String number = "";                     // Stores the number of the book if necessary
+        String input = sc.nextLine();           // Stores the first command from console
         StringTokenizer st = null;              // StringTokenizer variable without initial value
 
         // Stop the loop when the command is Q; Get next line and store it in command variable each loop
         for (; !input.equals("Q"); input = sc.nextLine()){
-
+            if (input.equals("")){ continue; }
             st = new StringTokenizer(input, " ");     // ST instance with console input
             String command = st.nextToken();
             String name;
@@ -40,7 +39,7 @@ public class PayrollProcessing {
                     department = st.nextToken();
                     date = new Date(st.nextToken());
                     double payrate = Double.parseDouble(st.nextToken());
-                    if (!date.isValid()){           // Check if the date is valid
+                    if (!date.isValid()){       // Check if the date is valid
                         System.out.println(date.toString() + " is not a valid date!");
                         continue;
                     }
@@ -73,7 +72,7 @@ public class PayrollProcessing {
                     date = new Date(st.nextToken());
                     salary = Integer.parseInt(st.nextToken());
 
-                    if (!date.isValid()){           // Check if the date is valid
+                    if (!date.isValid()){       // Check if the date is valid
                         System.out.println(date.toString() + " is not a valid date!");
                         continue;
                     }
@@ -107,7 +106,7 @@ public class PayrollProcessing {
                     salary = Integer.parseInt(st.nextToken());
                     int roles = Integer.parseInt(st.nextToken());
 
-                    if (!date.isValid()){           // Check if the date is valid
+                    if (!date.isValid()){       // Check if the date is valid
                         System.out.println(date.toString() + " is not a valid date!");
                         continue;
                     }
@@ -189,7 +188,7 @@ public class PayrollProcessing {
                     date = new Date(st.nextToken());
                     int hours = Integer.parseInt(st.nextToken());
 
-                    if (!date.isValid()){           // Check if the date is valid
+                    if (!date.isValid()){       // Check if the date is valid
                         System.out.println(date.toString() + " is not a valid date!");
                         continue;
                     }
