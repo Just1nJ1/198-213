@@ -5,6 +5,7 @@ package Project2;
  * @author Haochen Ji, Yichen Chen
  */
 public class Fulltime extends Employee {
+    private static final double PAY_PERIODS = 26.0;
     private int annualSalary;
 
     /**
@@ -41,6 +42,6 @@ public class Fulltime extends Employee {
      */
     @Override
     public void calculatePayment() {
-        setPayment(annualSalary / 26.0);
+        setPayment(annualSalary / PAY_PERIODS);
     }
 }

@@ -9,7 +9,6 @@ public class Management extends Fulltime {
     public static final double DEPARTMENT_HEAD_COMPENSATION = 365.38;
     public static final double DIRECTOR_COMPENSATION = 461.54;
 
-    private int roles;
     private String header;
     private double compensation;
 
@@ -22,7 +21,6 @@ public class Management extends Fulltime {
      */
     public Management(Profile p, int salary, int roles){
         super(p, salary);
-        this.roles = roles;
         switch (roles){
             case 1:
                 header =  "Manager";

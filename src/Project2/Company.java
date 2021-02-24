@@ -1,9 +1,6 @@
 package Project2;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * An array-based container class that implements the employee database.
@@ -93,6 +90,10 @@ public class Company {
         }
     }
 
+    /**
+     * Gets number of employee
+     * @return number of employee
+     */
     public int getNumEmployee() {
         return numEmployee;
     }
@@ -113,13 +114,10 @@ public class Company {
      * Print earning statement by departments.
      */
     public void printByDepartment() {
-        Arrays.sort(emplist, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee o1, Employee o2) {
-                if (o1 == null){ return 1; }
-                if (o2 == null){ return -1;}
-                return o1.getProfile().getDepartment().compareTo(o2.getProfile().getDepartment());
-            }
+        Arrays.sort(emplist, (o1, o2) -> {
+            if (o1 == null){ return 1; }
+            if (o2 == null){ return -1;}
+            return o1.getProfile().getDepartment().compareTo(o2.getProfile().getDepartment());
         });
         print();
     }
@@ -128,13 +126,10 @@ public class Company {
      * Print earning statements by date hired.
      */
     public void printByDate() {
-        Arrays.sort(emplist, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee o1, Employee o2) {
-                if (o1 == null){ return 1; }
-                if (o2 == null){ return -1;}
-                return o1.getProfile().getDateHired().compareTo(o2.getProfile().getDateHired());
-            }
+        Arrays.sort(emplist, (o1, o2) -> {
+            if (o1 == null){ return 1; }
+            if (o2 == null){ return -1;}
+            return o1.getProfile().getDateHired().compareTo(o2.getProfile().getDateHired());
         });
         print();
     }

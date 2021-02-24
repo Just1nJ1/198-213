@@ -10,13 +10,16 @@ import java.util.StringTokenizer;
  */
 public class PayrollProcessing {
 
+    /**
+     * Starts the payroll process.
+     */
     public void run() {
         System.out.println("Payroll Processing starts.");
 
         Company company = new Company();        // Company instance
         Scanner sc = new Scanner(System.in);    // Scanner instance; Scan from console
         String input = sc.nextLine();           // Stores the first command from console
-        StringTokenizer st = null;              // StringTokenizer variable without initial value
+        StringTokenizer st;                     // StringTokenizer variable without initial value
 
         // Stop the loop when the command is Q; Get next line and store it in command variable each loop
         for (; !input.equals("Q"); input = sc.nextLine()){

@@ -95,7 +95,7 @@ public class Date implements Comparable<Date>{
      */
     @Override
     public String toString() {
-        return Integer.toString(month) + "/" + Integer.toString(day) + "/" + Integer.toString(year);
+        return month + "/" + day + "/" + year;
     }
 
     /**
@@ -110,8 +110,6 @@ public class Date implements Comparable<Date>{
         if (year > date.year)  { return  1; }
         if (month < date.month){ return -1; }
         if (month > date.month){ return  1; }
-        if (day < date.day)    { return -1; }
-        if (day > date.day)    { return  1; }
-        return 0;
+        return Integer.compare(day, date.day);
     }
 }

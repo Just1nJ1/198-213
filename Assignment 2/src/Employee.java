@@ -30,6 +30,10 @@ public class Employee {
         this.payment = payment;
     }
 
+    /**
+     * Gets employee's profile
+     * @return employee's profile
+     */
     public Profile getProfile(){ return profile; }
 
     /**

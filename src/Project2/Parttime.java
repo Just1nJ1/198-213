@@ -5,6 +5,8 @@ package Project2;
  * @author Haochen Ji, Yichen Chen
  */
 public class Parttime extends Employee {
+    private static final int ADDITION_THRESHOLD = 80;
+    private static final double EXTRA_RATE = 0.5;
     private int hours;
     private double payRate;
 
@@ -37,10 +39,18 @@ public class Parttime extends Employee {
         this.hours = hours;
     }
 
+    /**
+     * Sets working hours for this part time employee
+     * @param hours working hours to be sat
+     */
     public void setHours(int hours) {
         this.hours = hours;
     }
 
+    /**
+     * Gets working hours of this part time employee
+     * @return working hours of this part time employee
+     */
     public int getHours(){
         return hours;
     }
@@ -51,7 +61,8 @@ public class Parttime extends Employee {
      */
     @Override
     public String toString() {
-        return super.toString() + "::PART TIME::Hourly Rate $" + String.format("%.2f", payRate) + "::Hours worked this period: " + hours;
+        return super.toString() + "::PART TIME::Hourly Rate $"
+                + String.format("%.2f", payRate) + "::Hours worked this period: " + hours;
     }
 
     /**
@@ -70,8 +81,8 @@ public class Parttime extends Employee {
     @Override
     public void calculatePayment() {
         double payment = hours * payRate;
-        if (hours > 80){
-            payment += (hours-80)*payRate/2;
+        if (hours > ADDITION_THRESHOLD){
+            payment += (hours-ADDITION_THRESHOLD)*payRate*EXTRA_RATE;
         }
         setPayment(payment);
     }
