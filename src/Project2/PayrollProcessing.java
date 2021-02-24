@@ -22,6 +22,7 @@ public class PayrollProcessing {
         for (; !input.equals("Q"); input = sc.nextLine()){
             if (input.equals("")){ continue; }
             st = new StringTokenizer(input, " ");     // ST instance with console input
+            if (!st.hasMoreTokens()) { continue; }
             String command = st.nextToken();
             String name;
             String department;
