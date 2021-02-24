@@ -10,10 +10,10 @@ public class Profile {
     private Date dateHired;
 
     /**
-     *
-     * @param name
-     * @param department
-     * @param date
+     * Constructs a profile with given variables.
+     * @param name the name stored in the profile
+     * @param department the department code stored in the profile
+     * @param date the hired date stored in the profile
      */
     public Profile(String name, String department, Date date){
         this.name = name;
@@ -26,8 +26,8 @@ public class Profile {
     public Date getDateHired(){ return dateHired; }
 
     /**
-     * Output a string.
-     * @return
+     * Returns a string representation of this profile.
+     * @return a string representation of this profile.
      */
     @Override
     public String toString() {
@@ -35,9 +35,9 @@ public class Profile {
     }
 
     /**
-     * Make comparation.
-     * @param obj
-     * @return
+     * Comparing two profiles by their name, department code, and hired date.
+     * @param obj the profile to be compared for equality with this profile
+     * @return true if obj is equal to this profile
      */
     @Override
     public boolean equals(Object obj) {

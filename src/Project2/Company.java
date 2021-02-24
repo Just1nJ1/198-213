@@ -40,9 +40,9 @@ public class Company {
     }
 
     /**
-     * Check the profile before adding.
-     * @param employee
-     * @return
+     * Adding an employee to emplist if the employee does not exist.
+     * @param employee the employee to be added to the list
+     * @return true if adding successfully; false if the employee already exists
      */
     public boolean add(Employee employee) {
         if (find(employee) == -1){
@@ -54,9 +54,10 @@ public class Company {
     }
 
     /**
-     * Maintain the original sequence.
-     * @param employee
-     * @return
+     * Removing the specified employee from the emplist and maintaining the same sequence.
+     * If the list does not contain the employee, it is unchanged.
+     * @param employee employee to be removed from emplist, if present
+     * @return true if emplist contained the specified employee
      */
     public boolean remove(Employee employee) {
         int index = find(employee);
@@ -68,9 +69,9 @@ public class Company {
     }
 
     /**
-     * Set working hours for a part time.
-     * @param employee
-     * @return
+     * Setting working hours for a part time employee.
+     * @param employee target employee that has the same profile, and his working hours
+     * @return true if emplist contained the specified employee
      */
     public boolean setHours(Employee employee) {
         int index = find(employee);
@@ -81,6 +82,7 @@ public class Company {
 
     /**
      * Process payments for all employees.
+     * It will call calculatePayment for every employees in the emplist
      */
     public void processPayments() {
         for (int i = 0; i < numEmployee; i ++){
@@ -105,7 +107,7 @@ public class Company {
     }
 
     /**
-     * Print earning stateme by departmentnts.
+     * Print earning statement by departments.
      */
     public void printByDepartment() {
         Arrays.sort(emplist, new Comparator<Employee>() {

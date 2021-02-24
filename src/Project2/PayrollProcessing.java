@@ -4,7 +4,8 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 /**
- * The user interface class that handles all exceptions and invalid data before it calls the methods in Company class to complete the associated commands.
+ * The user interface class that handles all exceptions and invalid data before it calls the methods in
+ * Company class to complete the associated commands.
  * @author Haochen Ji, Yichen Chen
  */
 public class PayrollProcessing {

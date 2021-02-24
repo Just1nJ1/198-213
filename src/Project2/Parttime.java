@@ -9,14 +9,17 @@ public class Parttime extends Employee {
     private double payRate;
 
     /**
-     *
+     * Constructs a part time employee instance without any field.
+     * This is used to create a temp instance and to check the type of employee.
      */
-    public Parttime(){ hours = 0; }
+    Parttime(){
+        this(null, 0);
+    }
 
     /**
-     *
-     * @param p
-     * @param payRate
+     * Constructs a part time employee instance with its profile and payrate.
+     * @param p the profile of the part time employee
+     * @param payRate the pay rate ($/hour) of the part time employee
      */
     public Parttime(Profile p, double payRate){
         super(p);
@@ -25,9 +28,9 @@ public class Parttime extends Employee {
     }
 
     /**
-     *
-     * @param p
-     * @param hours
+     * Constructs a part time employee instance with its profile and working hours
+     * @param p the profile of the part time employee
+     * @param hours the working hours of the part time employee
      */
     public Parttime(Profile p, int hours){
         super(p);
@@ -43,8 +46,8 @@ public class Parttime extends Employee {
     }
 
     /**
-     * Output a string.
-     * @return
+     * Returns a string representation of this part time employee.
+     * @return a string representation of this part time employee.
      */
     @Override
     public String toString() {
@@ -52,9 +55,9 @@ public class Parttime extends Employee {
     }
 
     /**
-     * Make comparation.
-     * @param obj
-     * @return
+     * Checking if the obj is an instance of part time employee.
+     * @param obj the employee to be checked
+     * @return true if the obj is a part time employee instance
      */
     @Override
     public boolean equals(Object obj) {
@@ -62,7 +65,7 @@ public class Parttime extends Employee {
     }
 
     /**
-     * Calculate payments.
+     * Calculating payment of this part time employee by certain equation.
      */
     @Override
     public void calculatePayment() {

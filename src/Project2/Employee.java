@@ -9,13 +9,8 @@ public class Employee {
     private double payment;
 
     /**
-     *
-     */
-    public Employee(){}
-
-    /**
-     *
-     * @param p
+     * Constructs an employee instance with its profile.
+     * @param p the profile of the employee
      */
     public Employee(Profile p){ profile = p; }
 
@@ -30,8 +25,8 @@ public class Employee {
     public Profile getProfile(){ return profile; }
 
     /**
-     *
-     * @return
+     * Returns a string representation of this employee.
+     * @return a string representation of this employee
      */
     @Override
     public String toString() {
@@ -39,9 +34,9 @@ public class Employee {
     }
 
     /**
-     * Make comparing.
-     * @param obj
-     * @return
+     * Checking if the obj is an instance of employee.
+     * @param obj the employee to be checked
+     * @return true if the obj is an employee instance
      */
     @Override
     public boolean equals(Object obj) {
@@ -49,9 +44,8 @@ public class Employee {
     }
 
     /**
-     * Calculate payments.
+     * Calculating payment of this part time employee by certain equation.
+     * It is empty for this class, but it is implements in subclasses.
      */
-    public void calculatePayment(){
-
-    }
+    public void calculatePayment(){ }
 }

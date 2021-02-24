@@ -7,12 +7,10 @@ package Project2;
 public class Fulltime extends Employee {
     private int annualSalary;
 
-    public Fulltime(){}
-
     /**
-     *
-     * @param p
-     * @param salary
+     * Constructs a full time employee instance with its profile.
+     * @param p the profile of the employee
+     * @param salary the annual salary of the employee
      */
     public Fulltime(Profile p, int salary) {
         super(p);
@@ -20,8 +18,8 @@ public class Fulltime extends Employee {
     }
 
     /**
-     * Output a string.
-     * @return
+     * Returns a string representation of this full time employee.
+     * @return a string representation of this full time employee
      */
     @Override
     public String toString() {
@@ -29,9 +27,9 @@ public class Fulltime extends Employee {
     }
 
     /**
-     * Make comparation.
-     * @param obj
-     * @return
+     * Checking if the obj is an instance of full time employee.
+     * @param obj the employee to be checked
+     * @return true if the obj is a full time employee instance
      */
     @Override
     public boolean equals(Object obj) {
@@ -39,7 +37,7 @@ public class Fulltime extends Employee {
     }
 
     /**
-     * Calculate payments.
+     * Calculating payment of this part time employee by certain equation.
      */
     @Override
     public void calculatePayment() {

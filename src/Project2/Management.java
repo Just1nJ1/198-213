@@ -14,15 +14,11 @@ public class Management extends Fulltime {
     private double compensation;
 
     /**
-     *
-     */
-    public Management(){}
-
-    /**
-     *
-     * @param p
-     * @param salary
-     * @param roles
+     * Constructs an employee instance with its profile.
+     * @param p the profile of the employee
+     * @param salary the annual salary of the employee
+     * @param roles the role of the full time employee:
+     *              1 represents manager; 2 represents department head; 3 represents director
      */
     public Management(Profile p, int salary, int roles){
         super(p, salary);
@@ -45,8 +41,8 @@ public class Management extends Fulltime {
     }
 
     /**
-     * Output a string.
-     * @return
+     * Returns a string representation of this management employee.
+     * @return a string representation of this management employee
      */
     @Override
     public String toString() {
@@ -54,9 +50,9 @@ public class Management extends Fulltime {
     }
 
     /**
-     * Make comparation.
-     * @param obj
-     * @return
+     * Checking if the obj is an instance of employee.
+     * @param obj the employee to be checked
+     * @return true if the obj is a management employee instance
      */
     @Override
     public boolean equals(Object obj) {
@@ -64,7 +60,7 @@ public class Management extends Fulltime {
     }
 
     /**
-     * Calculate payments.
+     * Calculating payment of this part time employee by certain equation.
      */
     @Override
     public void calculatePayment() {
