@@ -1,7 +1,5 @@
 package Project2;
 
-import java.util.Arrays;
-
 /**
  * An array-based container class that implements the employee database.
  * @author Haochen Ji, Yichen Chen
@@ -9,6 +7,7 @@ import java.util.Arrays;
 public class Company {
     private Employee[] emplist;
     private int numEmployee;
+    public static final int NOT_FOUND = -1;
 
     /**
      * Constructs an Company instance with an empty list.
@@ -27,7 +26,7 @@ public class Company {
         for (int i = 0; i < numEmployee; i++) {
             if (emplist[i].getProfile().equals(employee.getProfile())){ return i; }
         }
-        return -1;
+        return NOT_FOUND;
     }
 
     /**
@@ -45,7 +44,7 @@ public class Company {
      * @return true if adding successfully; false if the employee already exists
      */
     public boolean add(Employee employee) {
-        if (find(employee) == -1){
+        if (find(employee) == NOT_FOUND){
             if (numEmployee == emplist.length){ grow(); }
             emplist[numEmployee++] = employee;
             return true;
@@ -61,7 +60,7 @@ public class Company {
      */
     public boolean remove(Employee employee) {
         int index = find(employee);
-        if (index == -1){ return false; }
+        if (index == NOT_FOUND){ return false; }
         if (numEmployee - 1 - index >= 0)
             System.arraycopy(emplist, index + 1, emplist, index, --numEmployee - index);
         emplist[numEmployee] = null;
@@ -75,7 +74,7 @@ public class Company {
      */
     public boolean setHours(Employee employee) {
         int index = find(employee);
-        if (index == -1 || !(new Parttime().equals(employee))){ return false; }
+        if (index == NOT_FOUND || !(new Parttime().equals(employee))){ return false; }
         ((Parttime)emplist[index]).setHours(((Parttime)employee).getHours());
         return true;
     }
@@ -102,7 +101,6 @@ public class Company {
      * Print earning statements for all employees.
      */
     public void print() {
-        System.out.println("--Printing earning statements for all employees--");
         for (Employee e : emplist){
             if (e != null) {
                 System.out.println(e);
@@ -114,11 +112,17 @@ public class Company {
      * Print earning statement by departments.
      */
     public void printByDepartment() {
-        Arrays.sort(emplist, (o1, o2) -> {
-            if (o1 == null){ return 1; }
-            if (o2 == null){ return -1;}
-            return o1.getProfile().getDepartment().compareTo(o2.getProfile().getDepartment());
-        });
+        for (int i = 0; i < numEmployee; i++)
+        {
+            for (int j = i + 1; j < numEmployee; j++) {
+                if (emplist[i].getProfile().getDepartment().compareTo(emplist[j].getProfile().getDepartment()) > 0)
+                {
+                    Employee temp = emplist[i];
+                    emplist[i] = emplist[j];
+                    emplist[j] = temp;
+                }
+            }
+        }
         print();
     }
 
@@ -126,11 +130,17 @@ public class Company {
      * Print earning statements by date hired.
      */
     public void printByDate() {
-        Arrays.sort(emplist, (o1, o2) -> {
-            if (o1 == null){ return 1; }
-            if (o2 == null){ return -1;}
-            return o1.getProfile().getDateHired().compareTo(o2.getProfile().getDateHired());
-        });
+        for (int i = 0; i < numEmployee; i++)
+        {
+            for (int j = i + 1; j < numEmployee; j++) {
+                if (emplist[i].getProfile().getDateHired().compareTo(emplist[j].getProfile().getDateHired()) > 0)
+                {
+                    Employee temp = emplist[i];
+                    emplist[i] = emplist[j];
+                    emplist[j] = temp;
+                }
+            }
+        }
         print();
     }
 }

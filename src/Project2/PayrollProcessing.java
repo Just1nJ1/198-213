@@ -224,7 +224,7 @@ public class PayrollProcessing {
                         System.out.println("Employee database is empty.");
                         break;
                     }
-
+                    System.out.println("--Printing earning statements for all employees--");
                     company.print();
                     break;
 
@@ -233,7 +233,7 @@ public class PayrollProcessing {
                         System.out.println("Employee database is empty.");
                         break;
                     }
-
+                    System.out.println("--Printing earning statements by date hired--");
                     company.printByDate();
                     break;
 
@@ -242,7 +242,7 @@ public class PayrollProcessing {
                         System.out.println("Employee database is empty.");
                         break;
                     }
-
+                    System.out.println("--Printing earning statements by department--");
                     company.printByDepartment();
                     break;
 
