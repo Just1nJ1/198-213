@@ -99,6 +99,7 @@ public class Company {
 
     /**
      * Print earning statements for all employees.
+     * @return the String instance that contains the information to be printed.
      */
     public String print() {
         String output = "";
@@ -111,7 +112,7 @@ public class Company {
     }
 
     /**
-     * Print earning statement by departments.
+     * Sort the employees list by departments.
      */
     public void sortByDepartment() {
         for (int i = 0; i < numEmployee; i++)
@@ -128,7 +129,7 @@ public class Company {
     }
 
     /**
-     * Print earning statements by date hired.
+     * Sort the employees list by date hired.
      */
     public void sortByDate() {
         for (int i = 0; i < numEmployee; i++)

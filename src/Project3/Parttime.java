@@ -42,6 +42,7 @@ public class Parttime extends Employee {
     /**
      * Constructs a part time employee instance with its profile and working hours
      * @param p the profile of the part time employee
+     * @param payRate the pay rate of the part time employee
      * @param hours the working hours of the part time employee
      */
     public Parttime(Profile p, double payRate, int hours){

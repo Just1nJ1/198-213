@@ -18,6 +18,10 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+/**
+ * The controller is used to handle the interaction between the graphic user interface and the functions.
+ * @author Haochen Ji, Yichen Chen
+ */
 public class Controller implements Initializable{
     private static final Employee NOTPASS = null;
     private static final int EMPTY = 0;
@@ -68,6 +72,10 @@ public class Controller implements Initializable{
     @FXML
     private TextArea outputArea;
 
+    /**
+     * Add the employee using data from GUI input fields.
+     * @param event The event invoking this function
+     */
     @FXML
     void add(ActionEvent event) {
         Employee employee = inputCheck();
@@ -81,11 +89,19 @@ public class Controller implements Initializable{
         }
     }
 
+    /**
+     * Clear the output text area.
+     * @param event The event invoking this function
+     */
     @FXML
     void clearOutput(ActionEvent event){
         outputArea.clear();
     }
 
+    /**
+     * Calculate the employee payments.
+     * @param event The event invoking this function
+     */
     @FXML
     void calculate(ActionEvent event){
         if (employeeEmptyCheck()){ return; }
@@ -93,6 +109,10 @@ public class Controller implements Initializable{
         outputArea.appendText("Calculation of employee payments is done.\n");
     }
 
+    /**
+     * Print the earning statement on text area.
+     * @param event The event invoking this function
+     */
     @FXML
     void print(ActionEvent event){
         if (employeeEmptyCheck()){ return; }
@@ -100,6 +120,10 @@ public class Controller implements Initializable{
         outputArea.appendText(company.print());
     }
 
+    /**
+     * Sort the employee by date hired and print the earning statement on text area.
+     * @param event The event invoking this function
+     */
     @FXML
     void printByDate(ActionEvent event){
         if (employeeEmptyCheck()){ return; }
@@ -108,6 +132,10 @@ public class Controller implements Initializable{
         outputArea.appendText(company.print());
     }
 
+    /**
+     * Sort the employee by department (CS, ECE, IT) and print the earning statement on text area.
+     * @param event The event invoking this function
+     */
     @FXML
     void printByDepartment(ActionEvent event){
         if (employeeEmptyCheck()){ return; }
@@ -116,6 +144,10 @@ public class Controller implements Initializable{
         outputArea.appendText(company.print());
     }
 
+    /**
+     * Import employees from external formatted text file.
+     * @param event The event invoking this function
+     */
     @FXML
     void importFromFile(ActionEvent event) {
         FileChooser chooser = new FileChooser();
@@ -190,11 +222,15 @@ public class Controller implements Initializable{
                 }
             }
         } catch (Exception e){
-            outputArea.appendText("Import Failed: " + e.getMessage() + "\n");
+            outputArea.appendText("Import Failed: pop-up window is closed.\n");
         }
 
     }
 
+    /**
+     * Export employees to the text file with printing format.
+     * @param event The event invoking this function
+     */
     @FXML
     void exportToFile(ActionEvent event) {
         FileChooser chooser = new FileChooser();
@@ -206,10 +242,14 @@ public class Controller implements Initializable{
         try (PrintWriter printWriter = new PrintWriter(targeFile)){
             printWriter.print(company.print());
         } catch (Exception e){
-            outputArea.appendText("Export Failed: " + e.getMessage() + "\n");
+            outputArea.appendText("Export Failed: pop-up window is closed.\n");
         }
     }
 
+    /**
+     * Remove the employee using data from GUI input fields.
+     * @param event The event invoking this function
+     */
     @FXML
     void remove(ActionEvent event) {
         if (employeeEmptyCheck()){ return; }
@@ -224,6 +264,10 @@ public class Controller implements Initializable{
         }
     }
 
+    /**
+     * Set working hour to the part time employee using data from GUI input fields.
+     * @param event The event invoking this function
+     */
     @FXML
     void setHour(ActionEvent event) {
         if (employeeEmptyCheck()){ return; }
@@ -238,16 +282,27 @@ public class Controller implements Initializable{
         }
     }
 
+    /**
+     * Quit the GUI.
+     * @param event The event invoking this function
+     */
     @FXML
     void quit(ActionEvent event){
         ((Stage)((Node)event.getSource()).getScene().getWindow()).close();
     }
 
+    /**
+     * Clear all text and selection in GUI.
+     * @param event The event invoking this function
+     */
     @FXML
     void clearInput(ActionEvent event){
         selectChanged("Clear");
     }
 
+    /**
+     * Initialize the company, the GUI with empty texts, and the listeners.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         company = new Company();
@@ -257,8 +312,15 @@ public class Controller implements Initializable{
         selectChanged("Clear");
     }
 
-    private void selectChanged(String selected){
-        switch (selected){
+    /**
+     * Set GUI to certain display mode:
+     * Clear: clear all text and selection in GUI;
+     * Part Time: make "Pay Rate" and "Working Hour" visible, and hide management checkbox and choice box;
+     * Full Time: make "Salary" and management checkbox visible, and hide "Pay Rate" and "Working Hour";
+     * @param mode Different preferences GUI display mode
+     */
+    private void selectChanged(String mode){
+        switch (mode){
             case "Clear":
                 inputName.clear();
                 inputHour.clear();
@@ -302,6 +364,9 @@ public class Controller implements Initializable{
         }
     }
 
+    /**
+     * Add listener to check boxes.
+     */
     private void addListener(){
         isManager.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -318,6 +383,10 @@ public class Controller implements Initializable{
         });
     }
 
+    /**
+     * Check if the employee list in the company is empty
+     * @return true if the list is empty; false otherwise.
+     */
     private boolean employeeEmptyCheck(){
         if (company.getNumEmployee() == EMPTY) {
             outputArea.appendText("Employee database is empty.\n");
@@ -326,10 +395,20 @@ public class Controller implements Initializable{
         return false;
     }
 
+    /**
+     * Check the inputs from GUI are valid or not. It's not called from set hour or remove.
+     * @return null if the inputs are not valid; otherwise the instance of subclass of Employee with inputs information from GUI.
+     */
     private Employee inputCheck(){
         return inputCheck(false, false);
     }
 
+    /**
+     * Check the inputs from GUI are valid or not.
+     * @param setHour true if the function is called from set hour, which will check there is a working hour input.
+     * @param remove true if the function is called from remove, which will not check inputs except name, department, and date.
+     * @return null if the inputs are not valid; otherwise the instance of subclass of Employee with inputs information from GUI.
+     */
     private Employee inputCheck(boolean setHour, boolean remove){
         String name = inputName.getText();
         if (inputName.getText().equals("")){
@@ -402,6 +481,12 @@ public class Controller implements Initializable{
             }
             return new Parttime(new Profile(name, department, dateHired), payRate, hours);
         } else {
+            if (setHour){
+                outputArea.appendText("Should select \"Part Time\"\n");
+                inputType.setValue("Part Time");
+                selectChanged("Part Time");
+                return NOTPASS;
+            }
             int salary = 0;
             try {
                 salary = Integer.parseInt(inputSalary.getText());
